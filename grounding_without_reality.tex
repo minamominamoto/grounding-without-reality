@@ -1,0 +1,616 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{times}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{orcidlink}
+\usepackage{natbib}
+\usepackage{microtype}
+
+\doublespacing
+
+\title{Minimal Grounding Without Physical Reality:\\
+Loop Closure and Resistance as Structural Conditions}
+
+\author{Minamo Minamoto\orcidlink{0009-0002-1201-5704}\\
+\small Independent Researcher\\
+\small \href{mailto:minamominamoto4f5683f6@gmail.com}{minamominamoto4f5683f6@gmail.com}}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+The symbol grounding problem, as formulated by \citet{Harnad1990},
+ties grounding to sensorimotor interaction with the physical world.
+We argue that this formulation conflates two distinct claims: that
+grounding requires a closed action--consequence loop with genuine
+error possibility, and that such a loop must be anchored in physical
+reality. We accept the first claim and contest the second.
+
+On the view developed here, minimal grounding requires two conditions:
+(i)~a closed action--consequence loop, and (ii)~resistance---the
+possibility of action failure under constraints that are independent
+of the agent's policy. Physical reality is one substrate in which
+these conditions are realized, but not the only one. On this account,
+even very simple control systems may instantiate minimal grounding at the lower bound, with richer forms arising through developmental layering.
+what distinguishes richer cases is not grounding versus non-grounding,
+but the developmental layering built on top of this minimal structure.
+
+We develop this claim through two cases. First, Rovee-Collier's mobile
+paradigm shows that pre-locomotor infants discover action--consequence
+regularities before mature mobility and before explicit conceptual
+representation, indicating that minimal grounded loops can arise early,
+persist, and be reinstated after interruption. Second, AlphaGo Zero
+provides a limiting case in an abstract domain: acting within a closed
+loop under constraints it cannot override, it can fail in ways that
+are structurally analogous to failure in physical environments. Under
+the structural conception defended here, this qualifies as a case of
+minimal grounding without physical reality.
+
+This analysis exposes a developmental inversion in current multimodal
+large language models. These systems acquire large-scale symbolic
+structure prior to any grounded action--consequence loop and only
+subsequently link that structure to perceptual channels. They are
+therefore better understood as augmented symbolic systems than as
+developmentally grounded ones, and as cases of cross-modal mapping
+rather than grounding in the sense defined here.
+
+We conclude by outlining a developmentally ordered architecture in
+which minimal action--consequence loops precede symbolic emergence,
+linking this proposal to the Naive Action-Consequence (NAC), Symbolic
+Accumulation (SAC), and abductive accumulation frameworks developed in
+prior work. The result is a substrate-neutral account of minimal
+grounding with implications for both cognitive theory and AI design.
+\end{abstract}
+
+\bigskip
+\noindent\textbf{Keywords:} symbol grounding; developmental cognition;
+action--consequence loops; embodiment; multimodal AI; cognitive architecture
+
+\newpage
+
+%% ============================================================
+\section{Introduction}
+%% ============================================================
+
+The symbol grounding problem \citep{Harnad1990} asks how the symbols
+manipulated by a cognitive system acquire meaning rather than remaining
+uninterpreted formal tokens. Harnad's canonical answer ties grounding
+to sensorimotor interaction: symbols become grounded when they are
+connected to the perceptual and motor representations through which an
+agent engages with the physical world. On this view, physical reality
+is not incidental but constitutive of grounding.
+
+This paper argues that Harnad's formulation conflates two claims that
+are logically independent. The first is structural: grounding requires
+a closed action--consequence loop in which genuine error is possible.
+The second is ontological: such a loop must be embedded in physical
+reality. The first claim is well-supported and forms the basis of the
+account developed here. The second claim, we argue, does not follow
+from the first and should be rejected.
+
+Separating these claims has significant consequences. It implies that
+grounding is substrate-neutral: wherever the structural conditions are
+met, minimal grounding is realized, regardless of whether the substrate
+is biological, physical, or abstract. It also reframes current debates
+about AI grounding, shifting the question from whether a system is
+embodied to whether it operates within the right kind of loop.
+
+The paper proceeds as follows. Section~\ref{sec:structure} defines the
+minimal structural conditions for grounding and distinguishes grounded
+loops from simulations and from mere recurrence. Section~\ref{sec:dev}
+examines developmental evidence from Rovee-Collier's mobile paradigm.
+Section~\ref{sec:alphago} presents AlphaGo Zero as a limiting case of
+minimal grounding without physical reality. Section~\ref{sec:llm}
+locates current multimodal large language models within the framework.
+Section~\ref{sec:arch} outlines architectural implications.
+Section~\ref{sec:conclusion} concludes.
+
+%% ============================================================
+\section{The Minimal Structure of Grounding}
+\label{sec:structure}
+%% ============================================================
+
+\subsection{What counts as a loop}
+\label{sec:loop}
+
+Not every recurring pattern constitutes a loop in the relevant sense.
+A pendulum oscillates; seasons recur; a thermostat cycles. What
+distinguishes a \emph{grounding loop} from mere recurrence is the
+presence of an agent whose actions are a causal part of the cycle and
+whose subsequent behavior is modified by what the cycle returns.
+
+More precisely, an action--consequence loop exists when: (i)~an
+agent selects an action from some action space; (ii)~that action
+produces a state change governed by a transition function; and
+(iii)~the resulting state is returned to the agent in a form that
+influences subsequent action selection. Mere recurrence---repetitive
+state change without an agent whose behavior is modified---does not
+satisfy condition~(iii) and falls outside the scope of grounding as
+defined here.
+
+\subsection{Resistance and the distinction from simulation}
+\label{sec:resistance}
+
+A closed loop is necessary but not sufficient for grounding. A system
+could in principle execute a loop whose outcomes are entirely
+determined by the system's own internal states---a loop that returns
+only what the system's policy already implies. We call such a loop a
+\emph{simulation} and argue that it does not constitute grounding.
+
+We define \emph{resistance} as the structural property of a loop in
+which the agent's actions can fail with respect to the transition
+function governing state changes. More precisely: a loop exhibits
+resistance if and only if there exists a possible action under some
+state such that the resulting state is not determined by the agent's
+policy alone, but by a transition structure that can produce outcomes
+the policy does not guarantee. Resistance is therefore not merely the
+presence of noise, nor the existence of external constraints as such,
+but the genuine possibility that the outcome of an action is
+constrained independently of the agent's policy.
+
+This distinguishes grounded loops from simulations. In a simulation,
+the transition function is fully compliant with the agent's internal
+states: there is no structure external to the policy that can return
+an outcome the policy does not already determine. A grounded loop, by
+contrast, contains a transition structure that is independent of the
+agent's policy: regardless of what the agent does, the outcome is
+determined by that structure, not by the agent's internal selection
+mechanism. The agent can therefore be wrong.
+
+Note that this independence is not independence from any designer or
+external cause. AlphaGo's transition structure was designed by humans;
+the thermostat's environment was constructed. What matters is
+independence from the agent's policy at the time of action---that no
+act of the agent can, by itself, override the constraint structure
+governing outcomes. Resistance, in this sense, is not a property of
+the environment alone, but of the relation between action and outcome
+under constraints the agent cannot eliminate.
+
+\subsection{Minimal grounding}
+\label{sec:minimal}
+
+The minimal conditions for grounding are now in place: a closed
+action--consequence loop in which resistance is present. We call this
+\emph{minimal grounding}. It is important to be explicit about what
+this category includes. Even very simple control systems---such as
+thermostats---satisfy these conditions. A thermostat acts (switching
+heating), the outcome is governed by a transition structure
+(thermodynamics) that its policy cannot override, and it can fail in a
+well-defined sense: the target state may not be reached. On the
+present account, this qualifies as minimal grounding.
+
+This inclusion is not a defect of the definition but a consequence of
+taking the structural conditions seriously. The aim here is not to
+characterize the upper bound of grounding, but to identify its lower
+bound. If physical reality is not a necessary condition, then the
+lower bound must be located wherever the structural conditions---loop
+plus resistance---are genuinely satisfied.
+
+Minimal grounding does not entail meaning, concept formation, or
+representational content. It entails only that the system stands in a
+relation to its environment such that error is possible and not
+eliminable by policy revision alone. What distinguishes richer forms
+of grounding is not a different kind of loop, but what that loop can
+become: in particular, whether it admits recursive extension and an
+expansion of its failure space. This transition is taken up in
+Section~\ref{sec:developmental-grounding}.
+
+\subsection{Developmental grounding}
+\label{sec:developmental-grounding}
+
+Minimal grounding, as defined in Section~\ref{sec:minimal}, is a
+static structural condition: a loop exists, and resistance is present.
+\emph{Developmental grounding} names what that loop can become when it
+is not merely satisfied once, but repeatedly enacted, extended, and
+reorganized through accumulated action--consequence experience.
+
+Three properties mark the transition from minimal to developmental
+grounding. First, \emph{recursive extension}: the loop's state space
+expands as the agent's action repertoire grows. New actions become
+possible that could not have been selected before, and new failure
+modes emerge that were previously inaccessible. Second,
+\emph{failure-space thickening}: the variety of ways in which action
+can fail increases. In minimal grounding, failure is comparatively
+undifferentiated: the target state is reached or not, with little
+internal articulation of how the action went wrong. In developmental
+grounding, failure becomes differentiated: partial success, unexpected
+outcomes, and graded error signals accumulate and become informative.
+Third, \emph{loop reorganizability}: prior action--consequence
+regularities do not merely accumulate, but become available for
+reuse, recombination, and higher-order modification.
+
+These properties are not independent conditions added to minimal
+grounding. They arise when a minimal loop is repeatedly enacted, its
+consequences retained, and prior regularities become available for
+reuse and reorganization over time. The transition is therefore not
+categorical but continuous. This is consistent with the position
+adopted in Section~\ref{sec:minimal}: grounding is not binary, but
+admits of developmental depth.
+
+It is this developmental depth that the Naive Action-Consequence (NAC)
+and Symbolic Accumulation (SAC) frameworks are designed to track. On
+this view, symbolic structure does not precede grounding, but emerges
+from the progressive thickening and reorganization of grounded loops.
+Section~\ref{sec:dev} examines the earliest empirical evidence for
+this process.
+
+%% ============================================================
+\section{Developmental Evidence: The Mobile Paradigm}
+\label{sec:dev}
+%% ============================================================
+
+\subsection{Minimal loop emergence}
+\label{sec:loop-emergence}
+
+Rovee-Collier's mobile paradigm provides early empirical evidence for
+minimal grounding. In the standard procedure, a ribbon is tied from a
+pre-locomotor infant's ankle to an overhead mobile; kicking causes the
+mobile to move. Infants as young as two to three months---prior to
+stable locomotion, object manipulation, or explicit conceptual
+representation---discover this action--consequence regularity and
+increase kicking selectively under contingent reinforcement.
+
+Several features of this behavior are theoretically significant.
+First, the contingency is not taught but discovered: the infant's
+action space and the mobile's response structure become coupled, and
+the infant enters the loop. Second, when the ribbon is detached---so
+that kicking no longer moves the mobile---kicking rates drop. When
+the connection is restored, kicking resumes. The loop is thus treated
+as something that can be present or absent, indicating sensitivity to
+the contingency structure itself rather than to motion alone.
+
+This constitutes minimal grounding in the sense defined in
+Section~\ref{sec:minimal}. The action--consequence loop is closed;
+the transition structure (the mobile, the ribbon, the mechanical
+connection) is independent of the infant's policy; and failure---
+kicking without consequence---is genuinely possible and registered
+behaviorally. Physical reality is involved in this case, but what
+matters theoretically is not its presence as such, but the fact that
+the structural conditions for grounding are realized through it.
+
+\subsection{Retention and reactivation}
+\label{sec:retention}
+
+The mobile paradigm also provides evidence for the retention and
+reactivation of grounded loops \citep{RoveeCollier1980}. Infants
+retain memory of the action--consequence contingency for periods
+extending well beyond the original training session---up to two weeks
+in infants trained at three months, and longer with increasing age.
+After a delay during which no exposure to the mobile occurs, a brief
+reactivation cue---passive exposure to the moving mobile without the
+ankle ribbon---is sufficient to reinstate full kicking performance.
+The loop, once formed, can be re-entered from outside.
+
+Two features of this retention are theoretically relevant. First, it
+is context-sensitive: if the mobile or the surrounding cues are
+sufficiently altered, retention fails. The loop is not stored as an
+abstract rule but as a structure tied to the conditions under which it
+was formed. Second, reactivation is selective: the cue reinstates the
+learned contingency rather than simply triggering undirected activity.
+This indicates that what is retained is the action--consequence
+structure itself, not merely a heightened arousal or general motor
+readiness \citep{RoveeCollier1997}.
+
+In terms of Section~\ref{sec:minimal}, this demonstrates that minimal
+grounding is not merely instantiated but can persist and be
+re-entered. The loop is not transient. Prior grounded structure can be
+reinstated after interruption, indicating that action--consequence
+regularities, once formed, remain available for renewed enactment
+beyond the episode in which they were first acquired.
+
+\subsection{Toward developmental grounding}
+\label{sec:toward-dev}
+
+The evidence reviewed in Sections~\ref{sec:loop-emergence}
+and~\ref{sec:retention} establishes two things: that minimal grounding
+can arise prior to locomotion and conceptual representation, and that
+the resulting structure persists and can be reinstated. What it does
+not yet establish is the full developmental trajectory described in
+Section~\ref{sec:developmental-grounding}. The present data speak to
+the lower bound of grounding; the transition toward developmental
+grounding---recursive extension, failure-space thickening, loop
+reorganizability---lies beyond what the mobile paradigm directly
+demonstrates.
+
+What the paradigm does suggest, however, is that the conditions for
+such a transition are already in place at this earliest stage. The
+infant enters a loop, registers failure, retains the structure, and
+re-enters it. This is not yet developmental grounding, but it is
+precisely the kind of structure from which developmental grounding may
+emerge: a retained, error-sensitive, re-entrant loop available for
+further extension.
+
+Section~\ref{sec:alphago} examines a case in which the same minimal
+structural conditions are instantiated without physical reality:
+AlphaGo Zero. The contrast between these two cases---one biological
+and embodied, the other abstract and computational---is intended to
+isolate what the structural conditions themselves require, independent
+of the substrate in which they are realized.
+
+%% ============================================================
+\section{AlphaGo Zero as a Limiting Case}
+\label{sec:alphago}
+%% ============================================================
+
+AlphaGo Zero learns to play Go through self-play alone, without human
+game records \citep{Silver2017}. Its actions unfold within a state
+space defined by the rules of Go; these rules constitute a transition
+structure that the system cannot override. AlphaGo Zero can lose under a transition structure it cannot override. On
+the account developed in Section~\ref{sec:structure}, this is
+sufficient for minimal grounding: there is a closed action--consequence
+loop, and there is resistance---the possibility of action failure under
+constraints independent of the agent's policy.
+
+We present this as a limiting case rather than as a paradigm instance
+of grounding. The task-level failure space is comparatively thin:
+outcomes are ultimately evaluated in terms of win or loss within a
+fixed rule structure. The loop admits no reactivation after
+interruption in the sense demonstrated by Rovee-Collier, and there is
+no evidence of loop reorganizability beyond what is induced by the
+training process itself. AlphaGo Zero satisfies the minimal
+conditions; it does not exemplify developmental grounding.
+
+The theoretical significance of this case is specific. It shows that
+physical reality is not a necessary condition for minimal grounding.
+The transition structure governing AlphaGo Zero's outcomes---the rules
+of Go---was designed by humans, but this does not disqualify it. As
+established in Section~\ref{sec:resistance}, the relevant independence
+is not independence from any designer, but independence from the
+agent's policy at the time of action. No move AlphaGo Zero selects can,
+by itself, override the constraint structure that determines whether
+that move succeeds. The agent can be wrong, and that is what matters.
+
+Taken together with Section~\ref{sec:dev}, this case isolates the
+structural conditions from the substrate. The infant instantiates the
+conditions in a biological, embodied setting; AlphaGo Zero instantiates
+them in an abstract computational one. Both qualify as cases of minimal
+grounding. What matters across these cases is not the substrate in
+which they are realized, but the structural conditions they instantiate:
+a closed loop with resistance.
+
+%% ============================================================
+\section{The Inversion Problem in Multimodal Large Language Models}
+\label{sec:llm}
+%% ============================================================
+
+\subsection{Where large language models fall in the framework}
+\label{sec:llm-location}
+
+Given the structural account of grounding developed in
+Section~\ref{sec:structure}, we can now ask where current multimodal
+large language models are situated within this framework.
+
+Consider first the loop condition. Large language models generate
+outputs as a function of input tokens. The generation step itself is
+not a closed action--consequence loop in the sense defined in
+Section~\ref{sec:loop} but a feed-forward mapping from input to output
+distribution. In standard deployment, the model
+produces a response, the response is received by a user, and the
+exchange may continue---but the system's parameters are not updated
+by that exchange, and no action--consequence loop is closed in the
+sense defined in Section~\ref{sec:loop}.
+
+Consider next the resistance condition. For resistance to be present,
+the transition structure must be independent of the agent's policy:
+the outcome must be capable of diverging from what the policy selects.
+In a large language model, the output is determined by the model's
+internal parameters applied to the input. There is no external
+constraint structure that can return an outcome the policy does not
+already determine. Outputs may be unexpected to a human observer, and
+errors in the colloquial sense are frequent---but these are
+distributional properties of the output, not structural failures in a
+closed loop. The system is not wrong with respect to a transition
+structure it cannot override; it is merely imprecise with respect to a
+target distribution it was trained to approximate.
+
+On the account developed in Section~\ref{sec:structure}, current
+multimodal large language models are therefore better characterized as
+simulations rather than as cases of minimal grounding in the
+structural sense defined here.
+
+\subsection{The developmental inversion}
+\label{sec:inversion}
+
+The classification established in Section~\ref{sec:llm-location} would
+apply to any system lacking a closed loop with resistance. What is
+specific to current large language models---and to multimodal
+extensions in particular---is not merely that they lack these
+conditions, but that they acquire their representational structure in
+an order that inverts the developmental sequence described in
+Sections~\ref{sec:dev} and~\ref{sec:alphago}.
+
+In the cases examined there, structure emerges from loop closure: the
+infant enters a contingency and discovers action--consequence
+regularities; AlphaGo Zero builds internal representations through
+iterated play within a constrained state space. In both cases,
+whatever representational structure exists is downstream of loop
+closure. The loop precedes the structure.
+
+Large language models invert this sequence. Symbolic and statistical
+structure---the internal representations that determine output---is
+acquired through exposure to text prior to any action--consequence
+loop. Perceptual modalities, when added, are attached to a
+representational system that is already formed. The loop, if
+introduced at all, comes after the structure. In developmental terms,
+this is not grounding followed by symbolic emergence; it is symbolic
+structure followed by perceptual extension.
+
+This inversion has a specific consequence. In developmentally grounded
+systems, the symbolic level remains constrained by the action-consequence
+regularities from which it arose. In systems where symbolic structure
+precedes any loop, that constraint is absent. The representational
+system is formed independently of any action--consequence structure
+and only subsequently linked to perceptual inputs. This is cross-modal
+mapping, not grounding.
+
+\subsection{Why multimodality does not fix grounding}
+\label{sec:multimodal}
+
+One response to the argument of Section~\ref{sec:inversion} is that
+multimodal extension might introduce the missing conditions. If a
+language model is given perceptual inputs---vision, audio, sensor
+streams---and if its outputs affect an environment that returns
+consequences, does this not close the loop and introduce resistance?
+
+The answer depends on the structure of the connection, not the number
+of modalities. Adding a visual encoder to a language model connects a
+perceptual channel to an already-formed representational system. It
+does not introduce a closed action--consequence loop unless the
+system's outputs cause state changes in an environment whose
+transition structure is independent of the system's policy. Perceptual
+inputs, however rich, are inputs to the feed-forward mapping; they do
+not by themselves constitute the constraint structure that resistance
+requires.
+
+The same point applies, though more cautiously, to systems that
+interact with external tools or APIs. If a model generates a query,
+receives a result, and incorporates that result into subsequent
+generation, there is a functional loop of a kind. But such interaction
+does not by itself establish resistance in the sense defined in
+Section~\ref{sec:resistance}. Whether it does so depends on whether
+the resulting action--consequence structure is governed by constraints
+independent of the model's policy, rather than merely extending the
+model's capacity for controlled retrieval or symbolic update.
+
+Adding modalities does not introduce grounding if the loop and
+resistance conditions are not satisfied. What multimodal extension
+does introduce is an expanded mapping: a richer set of input channels
+connected to an already-formed symbolic system. This is precisely the
+inversion described in Section~\ref{sec:inversion}, iterated at the
+level of modality rather than corrected.
+
+%% ============================================================
+\section{Toward a Developmentally Ordered Architecture}
+\label{sec:arch}
+%% ============================================================
+
+\subsection{The principle of developmental order}
+\label{sec:dev-order}
+
+The argument developed in Sections~\ref{sec:structure}
+through~\ref{sec:llm} has a positive implication. If grounding
+requires a closed action--consequence loop with resistance, and if
+symbolic structure must arise downstream of that loop rather than
+precede it, then any system intended to be developmentally grounded
+must be designed accordingly. The developmental order is not merely an
+empirical observation about how human cognition happens to develop; it
+is a structural requirement that follows from the account of grounding
+defended here.
+
+It follows that a developmentally grounded architecture must begin with minimal
+action--consequence loops and allow symbolic structure to emerge only
+downstream of their retention, extension, and reorganization.
+
+\subsection{Relation to NAC, SAC, and abductive accumulation}
+\label{sec:nac-sac}
+
+This principle connects directly to the NAC, SAC, and abductive
+accumulation frameworks developed in prior work \citep{Minamoto_prep}.
+The Naive Action-Consequence (NAC) stage corresponds to the minimal
+grounding established in Section~\ref{sec:minimal}: a closed loop with
+resistance, prior to symbolic structure. The infant in Rovee-Collier's
+paradigm is operating at this stage; AlphaGo Zero, in a more
+restricted domain, satisfies the same minimal conditions.
+
+The Symbolic Accumulation (SAC) stage corresponds to the developmental
+grounding described in Section~\ref{sec:developmental-grounding}: the
+loop is retained, extended, and becomes available for reorganization.
+Symbolic structure emerges here not as a precondition but as a
+downstream product of accumulated action--consequence regularities
+whose failure space has thickened sufficiently to support
+differentiated representation.
+
+Abductive accumulation names the further process by which retained
+regularities become available for inference, generalization, and
+structural revision---the highest level of the developmental hierarchy
+and the point at which the system's representational resources can be
+brought to bear on novel problems. This level presupposes, and cannot
+substitute for, the grounded loops from which it emerges.
+
+The vocabulary of the present paper---minimal grounding, resistance,
+loop retention, developmental grounding---is therefore not a
+replacement for these frameworks but a formalization of their
+structural preconditions.\footnote{See also related manuscripts on
+hallucination framing and topology of grounding, both currently in
+preparation.}
+
+\subsection{Architectural requirements implied by developmental grounding}
+\label{sec:requirements}
+
+The foregoing analysis implies a set of requirements for any
+architecture that aims at developmental grounding rather than symbolic
+augmentation.
+
+First, the architecture must support an expanding action repertoire.
+The initial loop need not be rich; what matters is that the action
+space is not fixed, so that new contingencies can be discovered as the
+system's capacities develop.
+
+Second, the architecture must provide differentiated failure signals.
+Binary success--failure is sufficient for minimal grounding but
+insufficient for the thickening of the failure space that
+developmental grounding requires. The system must be capable of
+registering not only that an action failed but something about how it
+failed.
+
+Third, the architecture must support retention and re-entry of prior
+action--consequence regularities. Loops must persist beyond their
+immediate enactment and be available for renewed engagement under
+varying conditions, as demonstrated by the reactivation evidence
+reviewed in Section~\ref{sec:retention}.
+
+Fourth, prior regularities must become progressively available for
+reorganization and recombination. This is the condition that
+distinguishes developmental grounding from mere accumulation: the
+system's history of loop closure must be accessible not only for
+repetition but for higher-order modification.
+
+These are not implementation specifications. They are structural
+requirements that any candidate architecture must satisfy if the
+developmental grounding account is correct, and they provide a
+principled basis for assessing both existing and proposed systems.
+
+%% ============================================================
+\section{Conclusion}
+\label{sec:conclusion}
+%% ============================================================
+
+The central claim of this paper is that grounding, at its lower bound,
+does not require a privileged substrate but a privileged structure: a
+closed action--consequence loop with resistance.
+
+We defined minimal grounding in structural terms and distinguished it
+from simulation by the presence of policy-independent constraint.
+Developmental evidence shows that such loops arise prior to symbolic
+representation and can persist and be reinstated. A limiting case in
+an abstract domain demonstrates that these conditions do not depend on
+physical reality.
+
+On this account, current multimodal language models are better
+understood as simulations: systems in which symbolic structure precedes
+and is only later linked to perception. This inversion clarifies why
+adding modalities does not, by itself, produce grounding. A
+developmentally grounded architecture must instead begin with minimal
+loops and allow symbolic structure to emerge downstream of their
+retention, extension, and reorganization.
+
+The account developed here concerns the lower bound of grounding and
+does not, by itself, explain the full emergence of meaning or
+conceptual structure. The empirical evidence establishes the existence
+and persistence of minimal loops, not the complete developmental
+trajectory. The architectural implications are therefore structural
+rather than implementational. Within these limits, however, the
+account provides a unified framework for understanding grounding across
+biological and artificial systems.
+
+%% ============================================================
+\bibliographystyle{apalike}
+\bibliography{grounding}
+%% ============================================================
+
+\end{document}
